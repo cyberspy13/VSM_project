@@ -1,0 +1,47 @@
+Project Specification: Vehicle Service Management (VSM) Extension
+1. Overview
+The objective is to allow a business to track vehicles owned by their customers and record service histories. When a mechanic or service advisor posts a Sales Invoice for service work, the system should automatically log the service history against the specific vehicle.
+
+2. Data Model (Tables)
+You will need to create two new custom tables and extend one standard table.
+
+Table 1: Vehicle
+
+Vehicle No. (Code[20], Primary Key, mapped to a No. Series)
+Customer No. (Code[20], TableRelation to Customer)
+Make (Text[50] — e.g., Toyota, Honda, Ford, Volvo, Suzuki)
+Model (Text[50])
+Registration No. (Code[20])
+Next Service Date (Date)
+
+Table 2: Vehicle Service Ledger Entry
+
+Entry No. (Integer, Primary Key, AutoIncrement)
+Vehicle No. (Code[20], TableRelation to Vehicle)
+Service Date (Date)
+Service Description (Text[100])
+Posted Document No. (Code[20])
+Table Extension: Sales Header & Sales Invoice Header
+Add a new field: Vehicle No. (Code[20], TableRelation to Vehicle). This field should only show vehicles belonging to the selected Sell-to Customer No.
+
+3. User Interface (Pages)
+
+Vehicle Card & List: Standard data entry pages for the Vehicle table.
+
+Customer Card Extension: Add an action in the ribbon to open the Vehicle List filtered to that specific customer.
+
+Sales Order/Invoice Extension: Add the Vehicle No. field to the General FastTab of the Sales Invoice and Sales Order pages.
+
+4. Business Logic (Codeunits & Event Subscribers)
+This is where the mid-level complexity comes in. You need to automate the creation of the Service Ledger Entry without modifying base Microsoft code.
+
+Event Subscriber 1 (Data Transfer): Subscribe to the event that transfers fields from the Sales Header to the Sales Invoice Header during the posting routine so the Vehicle No. is retained on the posted document.
+
+Event Subscriber 2 (Ledger Creation): Subscribe to the OnAfterPostSalesDoc (or equivalent Codeunit 80 event).
+
+Condition: If the posted document has a Vehicle No. assigned, the code should automatically insert a new record into the Vehicle Service Ledger Entry table.
+
+Mapping: Map the Posting Date to the Service Date, and grab the first text line of the invoice for the Service Description.
+
+Codeunit (Date Calculation): Create a procedure that recalculates the Next Service Date on the Vehicle Card (e.g., adding exactly 12 months to the latest Service Date) and updates the Vehicle record.
+
