@@ -8,7 +8,7 @@ table 52003 "NAVI_VehicleServiceLedgerEntry"
         field(1; "Entry No."; Integer)
         {
             Caption = 'Entry No.';
-            //AutoIncrement = true;
+            AutoIncrement = true;
         }
         field(2; "Vehicle No."; Code[20])
         {
