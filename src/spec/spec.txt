@@ -21,7 +21,8 @@ Vehicle No. (Code[20], TableRelation to Vehicle)
 Service Date (Date)
 Service Description (Text[100])
 Posted Document No. (Code[20])
-Table Extension: Sales Header & Sales Invoice Header
+
+Table Extension 3: Sales Header & Sales Invoice Header
 Add a new field: Vehicle No. (Code[20], TableRelation to Vehicle). This field should only show vehicles belonging to the selected Sell-to Customer No.
 
 3. User Interface (Pages)
