@@ -35,7 +35,7 @@ Sales Order/Invoice Extension: Add the Vehicle No. field to the General FastTab 
 
 4. Business Logic (Codeunits & Event Subscribers)
 This is where the mid-level complexity comes in. You need to automate the creation of the Service Ledger Entry without modifying base Microsoft code.
-
+NEED to be doing
 Event Subscriber 1 (Data Transfer): Subscribe to the event that transfers fields from the Sales Header to the Sales Invoice Header during the posting routine so the Vehicle No. is retained on the posted document.
 
 Event Subscriber 2 (Ledger Creation): Subscribe to the OnAfterPostSalesDoc (or equivalent Codeunit 80 event).

@@ -17,7 +17,7 @@ table 52000 NAVI_Vehicle
         field(3; Make; Code[20])
         {
             Caption = 'Make';
-            TableRelation = NAVI_Make.Model;
+            TableRelation = NAVI_Make."Make Code";
         }
         field(4; Model; Code[20])
         {

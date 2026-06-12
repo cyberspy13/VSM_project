@@ -18,10 +18,19 @@ page 52000 NAVI_Make
                 field("Make Code"; Rec."Make Code")
                 {
                 }
-                field(Model; Rec.Model)
-                {
-                }
             }
         }
     }
+    trigger OnNewRecord(BelowxRec: Boolean)
+    var
+        MakeModel: Record NAVI_Model;
+    begin
+        if Rec."No." = 0 then begin
+            MakeModel.LockTable(true);
+            if MakeModel.FindLast() then
+                Rec."No." := MakeModel."No." + 1
+            else
+                Rec."No." := 1;
+        end;
+    end;
 }

@@ -2,6 +2,8 @@ table 52002 NAVI_Model
 {
     Caption = 'Model';
     DataClassification = ToBeClassified;
+    LookupPageId = 52001;
+    DrillDownPageId = 52001;
 
     fields
     {
@@ -22,21 +24,15 @@ table 52002 NAVI_Model
     }
     keys
     {
-        key(PK; "No.")
+        key(PK; "No.", "Make Code", Model)
         {
             Clustered = true;
         }
     }
-    trigger OnInsert()
-    var
-        MakeModel: Record NAVI_Model;
-    begin
-        if Rec."No." = 0 then begin
-            MakeModel.LockTable(true);
-            if MakeModel.FindLast() then
-                Rec."No." := MakeModel."No." + 1
-            else
-                Rec."No." := 1;
-        end;
-    end;
+    fieldgroups
+    {
+        fieldgroup(DropDown; "No.", "Make Code", Model)
+        {
+        }
+    }
 }

@@ -25,12 +25,10 @@ page 52002 NAVI_VehicleCard
                 field("Make Code"; Rec."Make")
                 {
                     Tooltip = 'Make Code';
-                    TableRelation = NAVI_Make;
                 }
                 field("Model Code"; Rec."Model")
                 {
                     Tooltip = 'Model Code';
-                    TableRelation = NAVI_Model;
                 }
                 field("Registration No."; Rec."Registration No.")
                 {

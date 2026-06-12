@@ -24,4 +24,16 @@ page 52001 NAVI_Model
             }
         }
     }
+    trigger OnNewRecord(BelowxRec: Boolean)
+    var
+        MakeModel: Record NAVI_Model;
+    begin
+        if Rec."No." = 0 then begin
+            MakeModel.LockTable(true);
+            if MakeModel.FindLast() then
+                Rec."No." := MakeModel."No." + 1
+            else
+                Rec."No." := 1;
+        end;
+    end;
 }
