@@ -24,6 +24,7 @@ page 52000 NAVI_Make
     trigger OnNewRecord(BelowxRec: Boolean)
     var
         MakeModel: Record NAVI_Model;
+        Codeunit80: Codeunit 80;
     begin
         if Rec."No." = 0 then begin
             MakeModel.LockTable(true);

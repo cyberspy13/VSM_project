@@ -37,11 +37,8 @@ Sales Order/Invoice Extension: Add the Vehicle No. field to the General FastTab 
 This is where the mid-level complexity comes in. You need to automate the creation of the Service Ledger Entry without modifying base Microsoft code.
 NEED to be doing
 Event Subscriber 1 (Data Transfer): Subscribe to the event that transfers fields from the Sales Header to the Sales Invoice Header during the posting routine so the Vehicle No. is retained on the posted document.
-
 Event Subscriber 2 (Ledger Creation): Subscribe to the OnAfterPostSalesDoc (or equivalent Codeunit 80 event).
-
 Condition: If the posted document has a Vehicle No. assigned, the code should automatically insert a new record into the Vehicle Service Ledger Entry table.
-
 Mapping: Map the Posting Date to the Service Date, and grab the first text line of the invoice for the Service Description.
 
 Codeunit (Date Calculation): Create a procedure that recalculates the Next Service Date on the Vehicle Card (e.g., adding exactly 12 months to the latest Service Date) and updates the Vehicle record.

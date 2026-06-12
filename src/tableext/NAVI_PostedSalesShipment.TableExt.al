@@ -1,4 +1,4 @@
-tableextension 52001 NAVI_VehicleSalesHeaderInvoice extends "Sales Invoice Header"
+tableextension 52002 NAVI_PostedSalesShipment extends "Sales Shipment Header"
 {
     fields
     {

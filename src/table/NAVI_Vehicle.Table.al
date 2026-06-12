@@ -13,6 +13,16 @@ table 52000 NAVI_Vehicle
         {
             Caption = 'Customer No.';
             TableRelation = Customer;
+            trigger OnValidate()
+            var
+                VehicleRec: Record NAVI_Vehicle;
+            begin
+                if Rec."Customer No." <> '' then begin
+                    VehicleRec.SetRange("Customer No.", Rec."Customer No.");
+                    if not VehicleRec.IsEmpty() then
+                        Error('This customer is already selected. Please choose another Customer.');
+                end;
+            end;
         }
         field(3; Make; Code[20])
         {

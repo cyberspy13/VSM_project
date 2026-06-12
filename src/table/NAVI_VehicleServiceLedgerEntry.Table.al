@@ -10,9 +10,9 @@ table 52003 "NAVI_VehicleServiceLedgerEntry"
             Caption = 'Entry No.';
             AutoIncrement = true;
         }
-        field(2; "Vehicle No."; Code[20])
+        field(2; "Vehicle VIN No."; Code[20])
         {
-            Caption = 'Vehicle No.';
+            Caption = 'Vehicle VIN No.';
             TableRelation = NAVI_Vehicle."Vehicle VIN No.";
         }
         field(3; "Service Date"; Date)
@@ -23,9 +23,9 @@ table 52003 "NAVI_VehicleServiceLedgerEntry"
         {
             Caption = 'Service Description';
         }
-        field(5; "Posted Dosument No."; Code[20])
+        field(5; "Posted Document No."; Code[20])
         {
-            Caption = 'Posted Dosument No.';
+            Caption = 'Posted Document No.';
         }
     }
     keys
