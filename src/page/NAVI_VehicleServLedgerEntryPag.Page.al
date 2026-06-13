@@ -48,7 +48,7 @@ page 52006 NAVI_VehicleServLedgerEntryPag
                     NextServiceDate: Date;
                     CalculateNextServiseDateCdu: Codeunit 52001;
                 begin
-                    CalculateNextServiseDateCdu.CalculateNextServiceDate(Rec, Rec."Service Date", 365);
+                    NextServiceDate := CalculateNextServiseDateCdu.CalculateNextServiceDate(Rec, Rec."Service Date", 365);
                     Message('The next service date is %1', NextServiceDate);
                 end;
             }
